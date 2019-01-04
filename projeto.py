@@ -37,10 +37,16 @@ def encerrarConta():
     except IOError:
         print 'Conta nao Encontrada! \n'
 
-def escreverValor(valor):
-    arq = open('%s.txt' %id, 'a')
-    arq.write(str(valor))
+def lerSenha():
+    arq = open('%s.txt' %id, 'r')
+    senha = ''
+    firstLine = True
+    for linha in arq:
+        if firstLine:
+            senha = str(linha)
+            firstLine = False
     arq.close()
+    return senha
 
 def printMenu():
     print ('1 - Criar Conta\n')
@@ -133,16 +139,27 @@ while (op != 3):
         menuCriar()
     if op == 2:
         id = raw_input('Digite o ID do funcionario: \n')
+        senha = raw_input('Digite a senha: \n')
         if id[0] == 'g':
             try:
                 with open('%s.txt' %id, 'r') as f:
-                    subGer()
+                    senha1 = lerSenha()
+                    if senha == senha1:
+                        subGer()
+                    else:
+                        print 'Senha Incorreta!'
+                        printMenu()
             except IOError:
                 print "Esse ID ainda nao esta Cadastrado! \n"
         if id[0] == 'f':
             try:
                 with open('%s.txt' %id, 'r') as f:
-                    subFunc()
+                    senha2 = lerSenha()
+                    if senha == senha2:
+                        subFunc()
+                    else:
+                        print 'Senha Incorreta!'
+                        printMenu()
             except IOError:
                 print "Esse ID ainda nao esta Cadastrado! \n"
 
