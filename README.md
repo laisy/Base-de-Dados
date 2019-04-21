@@ -1,5 +1,6 @@
 # Base-de-Dados_Python
 Projeto em Python de uma Pesquisa e Base de Dados com Login de Gerente e Funcionario.
+
 1.
 Descrição: Media global de vendas por gênero de jogos que foram lançados em um determinado ano.
 Acesso: gerente e funcionário
